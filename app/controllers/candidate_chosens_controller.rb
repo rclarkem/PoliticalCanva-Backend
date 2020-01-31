@@ -1,0 +1,2 @@
+class CandidateChosensController < ApplicationController
+end

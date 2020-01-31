@@ -6,8 +6,7 @@ class CreateVoters < ActiveRecord::Migration[6.0]
       t.integer :age
       t.string :gender
       t.string :political_party_identification
-      t.integer :candidate_id
-      # t.time :last_election_voted_date
+      t.string :ocd_id
       t.string :street_number
       t.string :street_name
       t.string :city
