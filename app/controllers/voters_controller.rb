@@ -1,7 +1,7 @@
 class VotersController < ApplicationController
 
 def index
-    @voters = Voter.all
+    @voters = Voter.where.not(ocd_id: nil)
     render json: @voters
 end
 

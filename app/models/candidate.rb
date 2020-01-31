@@ -3,5 +3,8 @@ class Candidate < ApplicationRecord
 
 
 
-    
+    def eligible_voters
+        Voter.find_eligible_voters(self)
+    end
+
 end
