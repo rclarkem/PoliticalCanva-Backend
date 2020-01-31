@@ -22,15 +22,18 @@ class Voter < ApplicationRecord
                     params: {
                         address: address_of_voter,
                         includedOffices: true,
-                        key: 'AIzaSyB0aINBM-6ruLJ1fxuzEvn3EuaoBTH0Veo'
+                        key: ENV["GOOGLE_API_KEY"]
                     }
                 }
             )
             district = JSON.parse(google_request)
 
             if district["divisions"].include?(candidate.ocd_id)
-                eligible_voters << voter
+                eligible_voters << voter.id
             end
+
+
+
             # district["divisions"].keys.each do |ocd_id|
             #     if ind.find {|i| i === candidate.ocd_id}
             #         # byebug
