@@ -5,11 +5,21 @@ Voter.destroy_all
 CandidateChosen.destroy_all
 
 
-
+Candidate.create( first_name:"Alexandria",
+     last_name:"Ocasio-Cortez",
+     age: 42,
+     ocd_id: "ocd-division/country:us/state:ny/cd:14",
+     political_party_identification: "Democrat",
+     street_number: "74-09 ",
+     street_name: "37th Avenue Suite 305",
+     city: "Jackson Heights",
+     zip_code: '11372',
+     state:'New York'
+    )
  
 
 
-(1..50).each do |voter|
+(1..5).each do |voter|
 address_url = "https://data.cityofnewyork.us/resource/mifw-tguq.json"
 address_request = RestClient::Request.execute(
       method: :get,
@@ -47,7 +57,11 @@ Voter.all.each do |voter|
         }
     )
     district = JSON.parse(google_request)
-   byebug
+    district["divisions"].each do |ind|
+        if ind.find {|i| i === Candidate.first.ocd_id}
+            voter.update(ocd_id: ind[0])
+        end
+    end
 end
 
 puts address
