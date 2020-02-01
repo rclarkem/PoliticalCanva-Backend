@@ -27,24 +27,11 @@ class Voter < ApplicationRecord
                 }
             )
             district = JSON.parse(google_request)
-
             if district["divisions"].include?(candidate.ocd_id)
                 eligible_voters << voter.id
             end
-
-
-
-            # district["divisions"].keys.each do |ocd_id|
-            #     if ind.find {|i| i === candidate.ocd_id}
-            #         # byebug
-            #         eligible_voters << voter
-            #         # puts "#{voter} THIS PERSON IS NOT NIL"
-            #     end
-            # end
         end
-
         eligible_voters
-
     end
  
 end

@@ -1,5 +1,11 @@
 class Candidate < ApplicationRecord
-    has_many :voters
+    # should have named this better. Voters may chose our candidate or another during canvassing.
+    has_many :candidate_chosens
+    has_many :voters, through: :candidate_chosens
+
+    has_many :eligible_voters
+    has_many :voters, through: :eligible_voters
+
 
 
 
