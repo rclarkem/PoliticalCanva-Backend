@@ -5,9 +5,9 @@ Voter.destroy_all
 CandidateChosen.destroy_all
 
 
-Candidate.create( first_name:"Kristen",
-     last_name:"Gillibrand",
-     age: 42,
+Candidate.create( first_name:"Alexandria",
+     last_name:"Ocasio-Cortez",
+     age: 32,
      ocd_id: "ocd-division/country:us/state:ny/cd:14",
      political_party_identification: "Democrat",
      street_number: "780",
@@ -45,7 +45,7 @@ end
 
 
 
-
+User.create(first_name: "John", last_name: "Smith", username: "JSmith", password_digest: "123", email: "JS@edu.com", admin: true)
 
 
 
