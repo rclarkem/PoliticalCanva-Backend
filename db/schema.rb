@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_02_01_014031) do
 
   create_table "eligible_voters", force: :cascade do |t|
     t.integer "candidate_id"
-    t.integer "voter_id"
+    t.integer "eligible_voter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
