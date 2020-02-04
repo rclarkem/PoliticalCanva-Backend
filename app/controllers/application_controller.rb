@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
+private
 
-    def create_token(user_id)
+
+def create_token(user_id)
     JWT.encode({user_id: user_id }, hmac_secret,"HS256")
 end
 
@@ -13,15 +15,13 @@ def logged_in_user_decoded
         token = request.headers["Authorization"]
         decoded = JWT.decode(token, hmac_secret, true, {algorithm: 'HS256'})
         decoded.first["user_id"]
-        binding.pry
     rescue
         nil        
     end
 end
 
 def valid_token
-#   !!logged_in_user_decoded
+    !!logged_in_user_decoded
 end
-
 
 end

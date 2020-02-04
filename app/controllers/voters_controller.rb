@@ -1,5 +1,6 @@
 class VotersController < ApplicationController
     before_action :find_voter, only: [:show, :edit, :update, :destroy]
+  
 
 def index
     @voters = Voter.all
@@ -17,16 +18,6 @@ def create
         else
             render json: {errors: @voter.errors.full_messages}, status: 400
         end
-end
-
-def see_eligible_voters
-    user = #loggedin user => application controller inherited 
-    candidate = Candidate.find(user.candidate_id) 
-    eligble_voters = Voter.find_eligible_voters(candidate) 
-    @eligble_voters = eligble_voters.each do |voter|
-        Voter.find(voter)
-    end
-    render json: @eligble_voters
 end
 
 private

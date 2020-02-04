@@ -5,18 +5,7 @@ Voter.destroy_all
 CandidateChosen.destroy_all
 
 
-Candidate.create( first_name:"Alexandria",
-     last_name:"Ocasio-Cortez",
-     age: 32,
-     ocd_id: "ocd-division/country:us/state:ny/cd:14",
-     political_party_identification: "Democrat",
-     street_number: "780",
-     street_name: "Third Avenue Suite 2601",
-     city: "New York",
-     zip_code: '10017',
-     state:'New York'
-    )
- 
+
 
 
 (1..30).each do |voter|
@@ -42,10 +31,22 @@ address_request = RestClient::Request.execute(
 
 end
 
+Candidate.create( first_name:"Alexandria",
+     last_name:"Ocasio-Cortez",
+     age: 32,
+     ocd_id: "ocd-division/country:us/state:ny/cd:14",
+     political_party_identification: "Democrat",
+     street_number: "780",
+     street_name: "Third Avenue Suite 2601",
+     city: "New York",
+     zip_code: '10017',
+     state:'New York'
+    )
+ 
 
 
 
-User.create(first_name: "John", last_name: "Smith", username: "JSmith", password_digest: "123", email: "JS@edu.com", admin: true)
+User.create(first_name: "John", last_name: "Smith", username: "JSmith", password: "123", email: "JS@edu.com", admin: true)
 
 
 

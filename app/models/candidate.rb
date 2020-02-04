@@ -4,13 +4,18 @@ class Candidate < ApplicationRecord
     has_many :voters, through: :candidate_chosens
 
     has_many :eligible_voters
-    has_many :voters, through: :eligible_voters
+    has_many :voters_who_can_vote_for_me, through: :eligible_voters, source: :eligible_voter
 
+    after_create :create_eligible_voters
 
-
-
-    def eligible_voters
-        Voter.find_eligible_voters(self)
+    private
+    
+    def create_eligible_voters
+        array_of_ids = Voter.find_eligible_voters(self)
+  
+        array_of_ids.each do |voter_id|
+            EligibleVoter.create(eligible_voter_id: voter_id, candidate_id: self.id)
+        end
     end
 
 end

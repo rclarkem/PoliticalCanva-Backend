@@ -1,8 +1,7 @@
 class Voter < ApplicationRecord
     belongs_to :candidate, optional: true
     
-    has_many :potential_voters, foreign_key: :eligible_voter_id, class_name: :EligibleVoter
-    has_many :eligible_voters, through: :potential_voters
+    has_many :potential_candidate, foreign_key: :eligible_voter_id, class_name: :EligibleVoter, dependent: :destroy
 
     # used for api query and other features to input address as a string. 
     def address_combine
