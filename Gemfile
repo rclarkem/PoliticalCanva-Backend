@@ -20,6 +20,8 @@ gem 'knock'
 gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
 gem 'rest-client'
+gem 'active_model_serializers'
+gem 'prettier'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'httparty', '~> 0.13.7'

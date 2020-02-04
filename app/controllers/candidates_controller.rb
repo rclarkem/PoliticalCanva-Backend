@@ -11,6 +11,10 @@ def show
 end
 
 def create
+
+        # TODO: Add in if statement
+        # ! Creation can only be done if admin
+
        @candidate = Candidate.create(candidate_params)
         if @candidate.valid?
             render json: @candidate, status: :created
@@ -18,8 +22,6 @@ def create
             render json: {errors: @candidate.errors.full_messages}, status: 400
         end
 end
-
-
 
 private
 

@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::API
-private
+class ApplicationController < ActionController::API   
+   
+    private
 
 
 def create_token(user_id)
@@ -21,7 +22,7 @@ def logged_in_user_decoded
 end
 
 def valid_token
-    !!logged_in_user_decoded
+     !!logged_in_user_decoded
 end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_164737) do
+ActiveRecord::Schema.define(version: 2020_02_04_063019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2020_02_03_164737) do
     t.string "candidate_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "election_date"
+    t.string "ocd_id"
+    t.string "election_name"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -63,7 +66,6 @@ ActiveRecord::Schema.define(version: 2020_02_03_164737) do
     t.integer "age"
     t.string "gender"
     t.string "political_party_identification"
-    t.string "ocd_id"
     t.string "street_number"
     t.string "street_name"
     t.string "city"

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    belongs_to :candidate
+    belongs_to :candidate, optional: true
     has_secure_password
     validates :email, presence: true
 
@@ -11,4 +11,6 @@ class User < ApplicationRecord
     def find_voters
         self.candidate.eligible_voters
     end
+
+   
 end
