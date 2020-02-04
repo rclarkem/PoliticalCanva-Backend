@@ -3,6 +3,8 @@ class Candidate < ApplicationRecord
     has_many :candidate_chosens
     has_many :voters, through: :candidate_chosens
 
+    has_many :users
+
     has_many :eligible_voters
     has_many :voters_who_can_vote_for_me, through: :eligible_voters, source: :eligible_voter
 
