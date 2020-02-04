@@ -26,6 +26,7 @@ address_request = RestClient::Request.execute(
 
 end
 
+# Voter.create(first_name: "Nancy", last_name: "Chen", age: 27, gender: "female", political_party_identification: "Democrat", street_number: "925", street_name: "Astor Avenue", city: "Bronx", zip_code: "104691", state: "New York")
 
 Candidate.create( first_name:"Alexandria",
   last_name:"Ocasio-Cortez",
