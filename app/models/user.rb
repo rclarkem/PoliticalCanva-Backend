@@ -2,6 +2,8 @@ class User < ApplicationRecord
     belongs_to :candidate, optional: true
     has_secure_password
     validates :email, presence: true
+     validates :email, uniqueness: true
+     validates :username, presence: true
 
  
   def is_admin?
