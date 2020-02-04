@@ -21,8 +21,12 @@ def logged_in_user_decoded
     end
 end
 
-def valid_token
+def valid_token?
      !!logged_in_user_decoded
 end
+
+ def require_login
+    render json: {error: 'Unauthorized'}, status: :unauthorized if !valid_token?
+  end
 
 end
