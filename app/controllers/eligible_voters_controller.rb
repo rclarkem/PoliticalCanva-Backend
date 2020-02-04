@@ -1,5 +1,6 @@
 class EligibleVotersController < ApplicationController
-  before_action :find_eligible_voter, only: [:show, :edit, :update, :destroy]   
+  before_action :find_eligible_voter, only: [:show, :edit, :update, :destroy] 
+  before_action :require_login
      
      def index
           @eligible_voters = EligibleVoter.all

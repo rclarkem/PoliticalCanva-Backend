@@ -14,8 +14,10 @@ end
 def create
      @voter = Voter.create(voter_params)
         if @voter.valid?
+            if valid_token?
             candidate = User.find(logged_in_user_decoded).candidate.id
             EligibleVoter.create(eligible_voter_id: @voter.id, candidate_id: candidate)
+            end
             render json: @voter, status: :created
         else
             render json: {errors: @voter.errors.full_messages}, status: 400
