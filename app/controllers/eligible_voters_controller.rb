@@ -3,6 +3,8 @@ class EligibleVotersController < ApplicationController
   before_action :require_login
      
      def index
+          # user = logged_in_user
+          # my_voters = User.find(user).candidate.eligible_voters
           @eligible_voters = EligibleVoter.all
           render json: @eligible_voters
      end
