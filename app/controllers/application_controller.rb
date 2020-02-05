@@ -21,6 +21,8 @@ def logged_in_user_decoded
     end
 end
 
+
+
 def valid_token?
      !!logged_in_user_decoded
 end

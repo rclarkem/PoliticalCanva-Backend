@@ -39,8 +39,11 @@ Candidate.create( first_name:"Alexandria",
   zip_code: '10017',
   state:'New York'
 )
+#  Candidate.create( first_name:"Kristen", last_name:"Gillibrand", age: 32 ,ocd_id: "ocd-division/country:us/state:ny",political_party_identification: "Democrat",street_number: "780",street_name: "Third Avenue Suite 2601",city: "New York",zip_code: '10017', state:'New York')
 
 User.create(first_name: "John", last_name: "Smith", username: "JSmith", password: "123", email: "JS@edu.com", admin: true)
+# User.create(first_name: "Jack", last_name: "Thomson", username: "JThom", password: "123", email: "JT@edu.com", admin: false)
+# User.create(first_name: "John", last_name: "Smith", username: "JSmith", password: "123", email: "JS@edu.com", admin: true)
 
 
 

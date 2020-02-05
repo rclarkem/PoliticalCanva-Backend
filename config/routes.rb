@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :logins, only: [:create]
-  resources :eligible_voters
+  resources :eligible_voters, only: [:create, :update]
+  get '/my_voters', to: 'eligible_voters#my_eligible_voters'
+  get '/my_voters/:id', to: 'eligible_voters#show'
+  # delete '/my_voters/:id', to: 'eligible_voters#destroy'
   resources :candidate_chosens
   resources :candidates
   resources :voters

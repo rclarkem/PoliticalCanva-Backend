@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show, :edit, :update, :destroy]
+before_action :require_login
 
     def index
-        @users =  User.all
-        render json: @users
+        if User.find(logged_in_user_decoded).is_admin?
+          candidate_id = User.find(logged_in_user_decoded).candidate.id
+          @users = User.where(candidate_id: candidate_id)
+            render json: @users
+        else
+            render json: {error: 'Unauthorized'}, status: :unauthorized
+        end
     end
 
     def create

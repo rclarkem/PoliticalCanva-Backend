@@ -1,5 +1,6 @@
 class VotersController < ApplicationController
     before_action :find_voter, only: [:show, :edit, :update, :destroy]
+    before_action :require_login
     
 
 def index
