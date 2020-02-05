@@ -13,7 +13,7 @@ end
     end
 
     def create
-        if valid_token? && User.find(logged_in_user_decoded).is_admin?
+        if User.find(logged_in_user_decoded).is_admin?
             @candidate = Candidate.create(candidate_params)
                 if @candidate.valid?
                     render json: @candidate, status: :created
