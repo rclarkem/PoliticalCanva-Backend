@@ -3,7 +3,6 @@ before_action :find_candidate, only: [:show, :edit, :update, :destroy]
 before_action :require_login
 
 def index
-    
     @candidates = Candidate.all
     render json: @candidates
 end
