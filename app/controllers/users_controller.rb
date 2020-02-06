@@ -24,7 +24,8 @@ before_action :require_login, only: [:index, :show]
     def show
         user_id = params[:id]
         potential_admin = User.find(logged_in_user_decoded)
-        if logged_in_user_decoded == @user.id || potential_admin.is_admin? && @user.candidate.id === potential_admin.candidate_id
+        
+        if logged_in_user_decoded == user_id.to_i || potential_admin.is_admin? && @user.candidate.id === potential_admin.candidate_id
             render json: @user
          else
             render json: {error: 'Go Away!'}
