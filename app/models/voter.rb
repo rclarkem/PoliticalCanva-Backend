@@ -1,9 +1,17 @@
 class Voter < ApplicationRecord
     belongs_to :candidate, optional: true
     
+    # The candidates they are eligible to vote for:
     has_many :potential_candidates, foreign_key: :eligible_voter_id, class_name: :EligibleVoter, dependent: :destroy
+    
+
+    # The candidate they have chosen to vote for:
+    #has_many :endorsed_candidates, ...class_name :CandidateChosen 
+
+
 
     # after_create :create_eligible_voter
+
     # used for api query and other features to input address as a string. 
     def address_combine
         "#{self.street_number} #{self.street_name} #{self.city}, #{self.state} #{self.zip_code}"
@@ -15,11 +23,7 @@ class Voter < ApplicationRecord
         party_assoc.sample
     end
 
-    # def create_eligible_voter
-    #     EligibleVoter.create(eligible_voter_id: voter_id, candidate_id: user.candidate.id)
-    # end
-
-    #  runs the addresses of voters and compares them against the running candidate 
+    #  runs the addresses of All Voters in DB and compares them against the running candidate 
     # to see if they are an eligible voter based on district.
 
     def self.find_eligible_voters(candidate)  

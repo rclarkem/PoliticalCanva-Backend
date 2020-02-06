@@ -1,6 +1,6 @@
 class VotersController < ApplicationController
     before_action :find_voter, only: [:show, :edit, :update, :destroy]
-    before_action :require_login
+    # before_action :require_login
     
 
 def index
@@ -15,10 +15,10 @@ end
 def create
      @voter = Voter.create(voter_params)
         if @voter.valid?
-            if valid_token?
+            # if valid_token?
             candidate = User.find(logged_in_user_decoded).candidate.id
             EligibleVoter.create(eligible_voter_id: @voter.id, candidate_id: candidate)
-            end
+            # end
             render json: @voter, status: :created
         else
             render json: {errors: @voter.errors.full_messages}, status: 400

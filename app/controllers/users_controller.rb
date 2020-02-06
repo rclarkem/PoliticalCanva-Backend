@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show, :edit, :update, :destroy]
-before_action :require_login
+before_action :require_login, only: [:index, :show]
 
     def index
         if User.find(logged_in_user_decoded).is_admin?
