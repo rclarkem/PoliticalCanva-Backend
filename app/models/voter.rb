@@ -24,38 +24,8 @@ class Voter < ApplicationRecord
     end
 
 
-    def find_if_eligible
-            address_of_voter = self.address_combine
-            google_civic_url = "https://www.googleapis.com/civicinfo/v2/representatives"
-            google_request = RestClient::Request.execute(
-                method: :get,
-                url: google_civic_url,
-                headers: {
-                    params: {
-                        address: address_of_voter,
-                        includedOffices: true,
-                        key: ENV["GOOGLE_API_KEY"]
-                    }
-                }
-            )
-            district = JSON.parse(google_request)
-            if district["divisions"].include?(candidate.ocd_id)
-                put 'true'
-            end
-    end
+  
     
-    
-    # array_of_ids.each do |voter_id|
-    #     EligibleVoter.create(eligible_voter_id: voter_id, candidate_id: self.id)
-    # end
-
-    # def find_if_eligible
-    #     array_of_ids = Candidate.made_eligible(self)
-        
-    #     byebug
-    # end
-
-
 
 
     #  runs the addresses of All Voters in DB and compares them against the running candidate 
@@ -84,6 +54,10 @@ class Voter < ApplicationRecord
         end
         eligible_voters
     end
+
+
+
+    
 
     def self.candidate_in_district(voter)  
         candidate_id = []
