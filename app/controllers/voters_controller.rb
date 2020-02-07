@@ -1,7 +1,7 @@
 class VotersController < ApplicationController
     before_action :find_voter, only: [:show, :edit, :update, :destroy]
-    # before_action :require_login
-    
+    before_action :require_login
+    # TODO: Add another migration of column for phone_numbers:string into voters table 
 
 def index
     @voters = Voter.all
@@ -15,10 +15,13 @@ end
 def create
      @voter = Voter.create(voter_params)
         if @voter.valid?
+
             # if valid_token?
-            candidate = User.find(logged_in_user_decoded).candidate.id
-            EligibleVoter.create(eligible_voter_id: @voter.id, candidate_id: candidate)
+            # main_candidate = User.find(logged_in_user_decoded).candidate.id
+            candidate_id = Voter.candidate_in_district(@voter) 
+            # EligibleVoter.create(eligible_voter_id: @voter.id, candidate_id: candidate)
             # end
+            # byebug
             render json: @voter, status: :created
         else
             render json: {errors: @voter.errors.full_messages}, status: 400

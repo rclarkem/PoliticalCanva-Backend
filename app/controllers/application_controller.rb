@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
 
 
 def create_token(user_id)
-    JWT.encode({user_id: user_id }, hmac_secret,"HS256")
+    JWT.encode({user_id: user_id}, hmac_secret,"HS256")
 end
 
 def hmac_secret

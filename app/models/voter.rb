@@ -10,7 +10,7 @@ class Voter < ApplicationRecord
 
 
 
-    # after_create :create_eligible_voter
+    # after_create :find_if_eligible
 
     # used for api query and other features to input address as a string. 
     def address_combine
@@ -22,6 +22,41 @@ class Voter < ApplicationRecord
         party_assoc = ['Democrat', 'Republican', 'Independent', 'Undecided']
         party_assoc.sample
     end
+
+
+    def find_if_eligible
+            address_of_voter = self.address_combine
+            google_civic_url = "https://www.googleapis.com/civicinfo/v2/representatives"
+            google_request = RestClient::Request.execute(
+                method: :get,
+                url: google_civic_url,
+                headers: {
+                    params: {
+                        address: address_of_voter,
+                        includedOffices: true,
+                        key: ENV["GOOGLE_API_KEY"]
+                    }
+                }
+            )
+            district = JSON.parse(google_request)
+            if district["divisions"].include?(candidate.ocd_id)
+                put 'true'
+            end
+    end
+    
+    
+    # array_of_ids.each do |voter_id|
+    #     EligibleVoter.create(eligible_voter_id: voter_id, candidate_id: self.id)
+    # end
+
+    # def find_if_eligible
+    #     array_of_ids = Candidate.made_eligible(self)
+        
+    #     byebug
+    # end
+
+
+
 
     #  runs the addresses of All Voters in DB and compares them against the running candidate 
     # to see if they are an eligible voter based on district.
@@ -48,6 +83,31 @@ class Voter < ApplicationRecord
             end
         end
         eligible_voters
+    end
+
+    def self.candidate_in_district(voter)  
+        candidate_id = []
+        Candidate.all.each do |candidate|
+            address_of_voter = voter.address_combine
+            google_civic_url = "https://www.googleapis.com/civicinfo/v2/representatives"
+            google_request = RestClient::Request.execute(
+                method: :get,
+                url: google_civic_url,
+                headers: {
+                    params: {
+                        address: address_of_voter,
+                        includedOffices: true,
+                        key: ENV["GOOGLE_API_KEY"]
+                    }
+                }
+            )
+            district = JSON.parse(google_request)
+            if district["divisions"].include?(candidate.ocd_id)
+                candidate_id << candidate.id
+            end
+        end
+        # byebug
+        candidate_id
     end
  
 

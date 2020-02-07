@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :logins, only: [:create]
   resources :eligible_voters, only: [:create, :update]
-  get '/my_voters', to: 'eligible_voters#my_eligible_voters'
-  get '/my_voters/:id', to: 'eligible_voters#show'
+  get '/my-voters', to: 'eligible_voters#my_eligible_voters'
+  get '/my-voters/:id', to: 'eligible_voters#show'
   # TODO: Custom route for addresses search canvassing => for the frontend
   # delete '/my_voters/:id', to: 'eligible_voters#destroy'
   resources :candidate_chosens

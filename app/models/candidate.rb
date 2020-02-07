@@ -10,7 +10,21 @@ class Candidate < ApplicationRecord
 
     after_create :create_eligible_voters
 
+
+  def address_combine
+        "#{self.street_number} #{self.street_name} #{self.city}, #{self.state} #{self.zip_code}"
+    end
+
     private
+
+    # def made_eligible(voter)
+    #     Candidate.all.each do |candidate|
+            
+    #     end
+    # end
+
+# Candidate.made_eligible(self)
+
     
     def create_eligible_voters
         array_of_ids = Voter.find_eligible_voters(self)
