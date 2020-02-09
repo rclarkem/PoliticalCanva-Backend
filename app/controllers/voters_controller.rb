@@ -17,8 +17,8 @@ def create
         if @voter.valid?
             candidate_ids = Voter.candidate_in_district(@voter)
              candidate_ids.each do |candidate_id|
-                EligibleVoter.create(eligible_voter_id: @voter.id, candidate_id: candidate_id)
-             end
+                    EligibleVoter.create(eligible_voter_id: @voter.id, candidate_id: candidate_id)
+                end
             render json: @voter, status: :created
         else
             render json: {errors: @voter.errors.full_messages}, status: 400
@@ -32,7 +32,7 @@ def find_voter
 end
 
 def voter_params
-    params.require(:voter).permit(:first_name, :last_name, :age, :ocd_id, :political_party_identification, :street_number, :street_name, :city, :zip_code, :state, :gender)
+    params.require(:voter).permit(:first_name, :last_name, :age, :political_party_identification, :street_number, :street_name, :city, :zip_code, :state, :gender)
 end
 
 end

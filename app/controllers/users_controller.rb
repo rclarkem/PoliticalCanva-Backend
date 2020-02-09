@@ -15,7 +15,7 @@ before_action :require_login, only: [:index, :show, :delete, :update]
     def create
           @user = User.create(user_params)
         if @user.valid?
-            render json: @user, status: :created
+            render json: {user: UserSerializer.new(@user),token: create_token(@user.id), admin: @user.admin }
         else
             render json: {errors: @user.errors.full_messages}, status: 400
         end
