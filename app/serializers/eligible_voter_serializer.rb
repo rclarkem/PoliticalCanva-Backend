@@ -1,5 +1,5 @@
 class EligibleVoterSerializer < ActiveModel::Serializer
-  attributes :id, :eligible_voter_id, :voter_info
+  attributes :id, :eligible_voter_id, :candidate_id, :voter_info, 
   
 def voter_info
 
