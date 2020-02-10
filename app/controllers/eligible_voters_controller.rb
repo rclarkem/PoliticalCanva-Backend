@@ -10,7 +10,6 @@ class EligibleVotersController < ApplicationController
 
      def my_eligible_voters
           user = logged_in_user_decoded
-          # byebug
           my_voters = User.find(user).candidate.id
           @eligible_voters = EligibleVoter.where(candidate_id: my_voters)
           render json: @eligible_voters

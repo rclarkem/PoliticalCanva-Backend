@@ -25,6 +25,16 @@ def create
         end
 end
 
+
+    def update
+    voter = Voter.find(params[:id])
+    if voter.update(voter_params)
+      render json: voter.to_json
+    else
+      render json: voter.errors, status: :unprocessable_entity
+    end 
+  end
+
 private
 
 def find_voter

@@ -21,6 +21,23 @@ before_action :require_login, only: [:index, :show, :delete, :update]
         end
     end
 
+    def not_admin_update
+        user = User.find(params[:id])
+        if !User.find(logged_in_user_decoded).is_admin?
+            user.update(not_admin_params)
+              render json: user.to_json
+        end
+    end
+
+
+    def admin_update
+         user = User.find(params[:id])
+        if User.find(logged_in_user_decoded).is_admin?
+            user.update(user_params)
+              render json: user.to_json
+        end
+    end
+
     def show
         user_id = params[:id]
         potential_admin = User.find(logged_in_user_decoded)
@@ -35,6 +52,10 @@ before_action :require_login, only: [:index, :show, :delete, :update]
 
     def user_params
         params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :admin, :candidate_id)
+    end
+
+    def not_admin_params
+        params.require(:user).permit(:first_name, :last_name, :username, :email, :password)  
     end
 
     def find_user
