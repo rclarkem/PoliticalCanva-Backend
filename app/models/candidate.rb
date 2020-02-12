@@ -17,13 +17,6 @@ class Candidate < ApplicationRecord
 
     private
 
-    # def made_eligible(voter)
-    #     Candidate.all.each do |candidate|
-            
-    #     end
-    # end
-
-# Candidate.made_eligible(self)
 
     
     def create_eligible_voters
