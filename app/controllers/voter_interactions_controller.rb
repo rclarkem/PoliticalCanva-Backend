@@ -6,7 +6,6 @@ def index
     voter_interactions = VoterInteraction.all 
     render json: voter_interactions
 end
-
 def my_voter_interactions
           user = logged_in_user_decoded
           my_voters = User.find(user).candidate.id
@@ -14,7 +13,6 @@ def my_voter_interactions
           render json: @interactions
    
 end
-
 
 def create
     user_id = User.find(logged_in_user_decoded).id

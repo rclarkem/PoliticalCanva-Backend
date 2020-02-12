@@ -1,9 +1,12 @@
 class EligibleVoterSerializer < ActiveModel::Serializer
   attributes :id, :eligible_voter_id, :candidate_id, :eligible_voter
+  has_many :voter_interactions
 
   
-# def voter_info
 
+  def voter_interactions 
+    self.object.eligible_voter.voter_interactions
+  end
 #   {first_name: Voter.find(self.object.eligible_voter_id).first_name,
 #   last_name: Voter.find(self.object.eligible_voter_id).last_name,
 #   age: Voter.find(self.object.eligible_voter_id).age,
