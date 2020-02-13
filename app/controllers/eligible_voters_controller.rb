@@ -8,11 +8,13 @@ class EligibleVotersController < ApplicationController
           render json: @eligible_voters, include: '**'
      end
 
+     
+
      def my_eligible_voters
           user = logged_in_user_decoded
           my_voters = User.find(user).candidate.id
           @eligible_voters = EligibleVoter.where(candidate_id: my_voters)
-          render json: @eligible_voters
+          render json:  @eligible_voters
      end
    
      def show
