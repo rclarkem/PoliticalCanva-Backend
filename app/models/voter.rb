@@ -1,7 +1,8 @@
 class Voter < ApplicationRecord
     belongs_to :candidate, optional: true
+    
     has_many :voter_interactions
-    has_many :users, through: :voter_interactions
+    has_many :users, through: :voter_interactions, dependent: :destroy
     # The candidates they are eligible to vote for:
     has_many :potential_candidates, foreign_key: :eligible_voter_id, class_name: :EligibleVoter, dependent: :destroy
     
@@ -24,13 +25,6 @@ class Voter < ApplicationRecord
         party_assoc.sample
     end
 
-
-  
-    
-
-
-    #  runs the addresses of All Voters in DB and compares them against the running candidate 
-    # to see if they are an eligible voter based on district.
 
     def self.find_eligible_voters(candidate)  
         eligible_voters = []

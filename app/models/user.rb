@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     belongs_to :candidate, optional: true
     has_many :voter_interactions
-    has_many :voters, through: :voter_interactions
+    has_many :voters, through: :voter_interactions, dependent: :destroy
     
     has_secure_password
 

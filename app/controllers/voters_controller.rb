@@ -35,6 +35,13 @@ end
     end 
   end
 
+
+  def destroy
+    voter = Voter.find(params[:id])
+    voter.destroy
+    render json: voter
+  end
+
 private
 
 def find_voter
