@@ -14,17 +14,17 @@ class EligibleVotersController < ApplicationController
           user = logged_in_user_decoded
           my_voters = User.find(user).candidate.id
           @eligible_voters = EligibleVoter.where(candidate_id: my_voters)
-          render json:  @eligible_voters
+          render json:  @eligible_voters,  include: '**'
      end
    
      def show
-          render json: @eligible_voter
+          render json: @eligible_voter,  include: '**'
      end
 
      def create
           @eligible_voter.create(eligible_voter_params)
           if @eligible_voter.valid?
-            render json: @eligible_voter
+            render json: @eligible_voter,  include: '**'
         else
             render json: {errors: @eligible_voter.errors.full_messages}, status: 400
         end

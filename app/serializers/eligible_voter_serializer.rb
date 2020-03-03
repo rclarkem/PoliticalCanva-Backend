@@ -3,9 +3,9 @@ class EligibleVoterSerializer < ActiveModel::Serializer
 
 
   def voter_interactions    
-    # byebug
     self.object.eligible_voter.voter_interactions
   end
 
+   
 
 end

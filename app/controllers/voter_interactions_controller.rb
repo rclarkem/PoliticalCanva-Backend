@@ -16,7 +16,7 @@ end
 
 def create
     user_id = User.find(logged_in_user_decoded).id
-    voter_interaction = VoterInteraction.create(user_id: user_id, date_of_interaction: params[:date_of_interaction], contact_made: params[:contact_made], contact_not_made_reason: params[:contact_not_made_reason], vote_in_current_election: params[:vote_in_current_election], voter_id: params[:voter_id], candidate_id: params[:candidate_id] )
+    voter_interaction = VoterInteraction.create(user_id: user_id, date_of_interaction: params[:date_of_interaction], contact_made: params[:contact_made], contact_not_made_reason: params[:contact_not_made_reason], vote_in_current_election: params[:vote_in_current_election], voter_id: params[:voter_id], candidate_id: params[:candidate_id], candidate_support: params[:candidate_support])
     #   byebug
           if voter_interaction.valid?
             render json: voter_interaction

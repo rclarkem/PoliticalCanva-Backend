@@ -40,7 +40,7 @@ before_action :require_login, only: [:index, :show, :delete, :update]
 
     def admin_update
          user = User.find(params[:id])
-         
+        #  byebug
         if User.find(logged_in_user_decoded).is_admin?
             user.update(user_params)
               render json: user.to_json
@@ -63,7 +63,7 @@ before_action :require_login, only: [:index, :show, :delete, :update]
     private
 
     def user_params
-        params.permit(:first_name, :last_name, :username, :email, :password, :admin)
+        params.permit(:first_name, :last_name, :username, :email, :password, :admin, :candidate_id)
     end
 
     def not_admin_params

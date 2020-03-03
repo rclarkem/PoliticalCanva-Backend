@@ -4,7 +4,7 @@ Candidate.destroy_all
 Voter.destroy_all
 CandidateChosen.destroy_all
 
-(1..30).each do |voter|
+(1..100).each do |voter|
 address_url = "https://data.cityofnewyork.us/resource/mifw-tguq.json"
 address_request = RestClient::Request.execute(
       method: :get,
@@ -33,12 +33,14 @@ Candidate.create( first_name:"Alexandria",
   age: 32,
   ocd_id: "ocd-division/country:us/state:ny/cd:14",
   political_party_identification: "Democrat",
-  street_number: "780",
-  street_name: "Third Avenue Suite 2601",
-  city: "New York",
-  zip_code: '10017',
+  street_number: "1973",
+  street_name: "Westchester Avenue",
+  city: "Bronx",
+  zip_code: '10462',
   state:'New York'
 )
+ Candidate.create( first_name:"Kristen", last_name:"Gillibrand", age: 32 ,ocd_id: "ocd-division/country:us/state:ny",political_party_identification: "Democrat",street_number: "780",street_name: "Third Avenue Suite 2601",city: "New York",zip_code: '10017', state:'New York')
+
 #  Candidate.create( first_name:"Kristen", last_name:"Gillibrand", age: 32 ,ocd_id: "ocd-division/country:us/state:ny",political_party_identification: "Democrat",street_number: "780",street_name: "Third Avenue Suite 2601",city: "New York",zip_code: '10017', state:'New York')
 
 User.create(first_name: "John", last_name: "Smith", username: "JSmith", password: "123", email: "JS@edu.com", admin: true)

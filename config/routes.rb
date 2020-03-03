@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users
   get '/my-users', to: 'users#my_users'
   # TODO Ask if its put or patch
-  patch '/users/admin/edit', to: 'users#admin_update'
+  patch '/users/admin/:id/edit', to: 'users#admin_update'
   patch '/users/:id/edit', to: 'users#not_admin_update'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
