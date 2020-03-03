@@ -25,6 +25,8 @@ def create
         end
 end
 
+
+
 private
 
 def find_voter_interaction

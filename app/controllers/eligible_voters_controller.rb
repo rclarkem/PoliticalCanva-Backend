@@ -1,6 +1,6 @@
 class EligibleVotersController < ApplicationController
   before_action :find_eligible_voter, only: [:show, :edit, :update, :destroy] 
-  before_action :require_login
+#   before_action :require_login
      
 
      def index
@@ -28,6 +28,12 @@ class EligibleVotersController < ApplicationController
         else
             render json: {errors: @eligible_voter.errors.full_messages}, status: 400
         end
+     end
+
+     def destroy
+          eligible_voter = EligibleVoter.find(params[:id])
+          eligible_voter.destroy
+          render json: eligible_voter
      end
 
 

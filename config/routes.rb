@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :voter_interactions
   get '/my-voter-interactions', to: 'voter_interactions#my_voter_interactions'
   resources :logins, only: [:create]
-  resources :eligible_voters, only: [:index, :create, :update]
+  resources :eligible_voters, only: [:index, :create, :update, :destroy]
   get '/my-voters', to: 'eligible_voters#my_eligible_voters'
   get '/my-voters/:id', to: 'eligible_voters#show'
   # TODO: Custom route for addresses search canvassing => for the frontend
