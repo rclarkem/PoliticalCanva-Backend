@@ -30,6 +30,12 @@ class EligibleVotersController < ApplicationController
         end
      end
 
+     def destroy
+          eligible_voter = EligibleVoter.find(params[:id])
+          eligible_voter.destroy
+          render json: eligible_voter
+     end
+
 
      private
 
