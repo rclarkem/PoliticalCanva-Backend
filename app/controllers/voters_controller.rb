@@ -1,6 +1,6 @@
 class VotersController < ApplicationController
     before_action :find_voter, only: [:show, :edit, :update, :destroy]
-    # before_action :require_login
+    before_action :require_login
     # TODO: Add another migration of column for phone_numbers:string into voters table 
 
 def index
