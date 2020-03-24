@@ -23,7 +23,7 @@ address_request = RestClient::Request.execute(
    zip_code: address[voter]["zip_code"],
     state: "New York"
 )
-
+puts voter
 end
 
 # Voter.create(first_name: "Nancy", last_name: "Chen", age: 27, gender: "female", political_party_identification: "Democrat", street_number: "925", street_name: "Astor Avenue", city: "Bronx", zip_code: "104691", state: "New York")
