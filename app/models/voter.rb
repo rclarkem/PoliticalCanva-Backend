@@ -21,7 +21,7 @@ class Voter < ApplicationRecord
 
     # method for seed file to randomize party
     def self.randomize_political_party
-        party_assoc = ['Democrat', 'Republican', 'Independent', 'Undecided']
+        party_assoc = ['Democrat', 'Republican', 'Independent']
         party_assoc.sample
     end
 
