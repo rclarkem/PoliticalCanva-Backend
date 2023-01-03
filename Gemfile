@@ -24,7 +24,7 @@ gem 'active_model_serializers'
 gem 'prettier'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.21.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'faker'
